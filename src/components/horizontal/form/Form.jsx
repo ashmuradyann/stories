@@ -1,17 +1,20 @@
 import { useState } from 'react'
 import './form.scss'
 
-const Form = () => {
+const Form = ({ close, setSubmited }) => {
 
     const [state, setState] = useState("form")
     const [name, setName] = useState("")
     const [number, setNumber] = useState("")
     const [phoneNumberWarnMessage, setPhoneNumberWarnMessage] = useState(null)
 
-
     const submit = () => {
         console.log("ИМЯ: " + name, "НОМЕР: " + number)
         setState("finish")
+        setTimeout(() => {
+            close()
+            setSubmited(true)
+        }, 4000)
     }
 
     const phoneNumberHandleChange = (event) => {
@@ -43,7 +46,7 @@ const Form = () => {
                     <button onClick={submit} disabled={name === "" || number.length !== 12}>ОТПРАВИТЬ</button>
                 </div>
                 : <div className="finish__container">
-                    <h2>ЗАЯВКА ОТПРАВЛЕНО!</h2>
+                    <h2>ЗАЯВКА ОТПРАВЛЕНА!</h2>
                 </div>}
         </div>
     )

@@ -20,6 +20,7 @@ const Horizontal = () => {
   const mediaMatch = window.matchMedia('(max-width: 410px)')
 
   const [popup, setPopup] = useState(null)
+  const [submited, setSubmited] = useState(null)
 
   const images = [
     {
@@ -36,17 +37,46 @@ const Horizontal = () => {
       )}
     },
     image2,
-    image3,
-    image4,
+    {
+      url: image3,
+      seeMore: () => null,
+      seeMoreCollapsed: () => (
+        <div style={{flexDirection: 'column'}} className="seeMore__wrapper">
+          <button className="seeMoreCollapsed otherButton">
+            Кнопка
+          </button>
+          <button className="seeMoreCollapsed otherButton">
+            Кнопка
+          </button>
+        </div>
+      )
+    },
+    {
+      url: image4,
+      seeMore: () => null,
+      seeMoreCollapsed: () => (
+        <div style={{flexDirection: "column", paddingBottom: "20px"}} className="seeMore__wrapper">
+          <button className="seeMoreCollapsed otherButton2">
+            Кнопка
+          </button>
+          <button className="seeMoreCollapsed otherButton2">
+            Кнопка
+          </button>
+          <button className="seeMoreCollapsed otherButton2">
+            Кнопка
+          </button>
+        </div>
+      )
+    },
     image5,
     {
       url: image6,
-      seeMore: () => <Form />,
+      seeMore: ({ close }) => <Form close={close} setSubmited={setSubmited} />,
       seeMoreCollapsed: ({ toggleMore, action }) => (
         <div className="seeMore__wrapper">
-          <button className="seeMoreCollapsed" onClick={() => toggleMore(true)}>
-            Заполните Анкету
-          </button>
+          {<button style={submited && {pointerEvents: "none", animationName: "opacity"}} className="seeMoreCollapsed" onClick={() => toggleMore(true)}>
+            {!submited ? "Отправьте Заявку" : "Заявка Отправлено"}
+          </button>}
         </div>
       )
     }
