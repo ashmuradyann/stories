@@ -96,12 +96,13 @@ const Horizontal = () => {
       <div className="container">
         <div className="wrapper">
           <Stories
+            loop
             stories={images}
             width={mediaMatch.matches ? "100vw" : "400px"}
             height={mediaMatch.matches ? "100%" : "700px"}
             defaultInterval={5000}
           />
-          {imagesArr.map(el => <img style={{ display: "none" }} src={el} alt="img" />)}
+          {imagesArr.map((el, i) => <img key={i} src={el} style={{ display: "none" }} alt="img" />)}
         </div>
       </div>
       {popup ? <Popup setPopup={setPopup} /> : null}
