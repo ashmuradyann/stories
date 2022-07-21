@@ -8,16 +8,14 @@
     color: #323234;
 
     .form__container {
-        position: absolute;
-        top: 100px;
         animation-name: fade;
         animation-duration: 1s;
+        transform: translateY(20px);
         width: 85%;
         border-radius: 15px;
         padding: 15px 10px;
         background: rgba(196, 196, 196, 0.5);
         backdrop-filter: blur(6px);
-        margin-top: 200px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -73,16 +71,14 @@
     }
 
     .finish__container {
-        position: absolute;
-        top: 150px;
         animation-name: fade__finish;
         animation-duration: 1s;
+        transform: translateY(-30px);
         width: 85%;
         border-radius: 15px;
         padding: 15px 10px;
         background: rgba(196, 196, 196, 0.5);
         backdrop-filter: blur(6px);
-        margin-top: 200px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -93,24 +89,24 @@
 @keyframes fade {
     from {
         opacity: 0;
-        top: 50px;
+        transform: translateY(-50px);
     }
 
     to {
         opacity: 1;
-        top: 100px;
+        transform: translateY(20px);
     }
 }
 
 @keyframes fade__finish {
     from {
         opacity: 0;
-        top: 100px;
+        transform: translateY(-80px);
     }
 
     to {
         opacity: 1;
-        top: 150px;
+        transform: translateY(-30px);
     }
 }
 
