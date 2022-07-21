@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { ClickAwayListener } from '@mui/material';
+
 import './form.scss'
 
 const Form = ({ close, setSubmited }) => {
@@ -31,23 +33,25 @@ const Form = ({ close, setSubmited }) => {
 
     return (
         <div className="form__wrapper">
-            {state === "form"
-                ? <div className="form__container">
-                    <h3>МЫ СВЯЖЕМСЯ С ВАМИ</h3>
-                    <div className="group">
-                        <input value={name} className="form-input" type="text" onChange={(e) => setName(e.target.value)} />
-                        <label className={`${name.length ? "shrink" : ""} form-input-label`}>ВАШЕ ИМЯ</label>
+            <ClickAwayListener onClickAway={close}>
+                {state === "form"
+                    ? <div className="form__container">
+                        <h3>МЫ СВЯЖЕМСЯ С ВАМИ</h3>
+                        <div className="group">
+                            <input value={name} className="form-input" type="text" onChange={(e) => setName(e.target.value)} />
+                            <label className={`${name.length ? "shrink" : ""} form-input-label`}>ВАШЕ ИМЯ</label>
+                        </div>
+                        <div className="group">
+                            <input value={number !== "+7" ? number : ""} className="form-input" type="text" onChange={phoneNumberHandleChange} />
+                            <label className={`${number.length ? "shrink" : ""} form-input-label`}>ВАШ ТЕЛЕФОН</label>
+                        </div>
+                        {phoneNumberWarnMessage && <p>Неверный номер телефона</p>}
+                        <button onClick={submit} disabled={name === "" || number.length !== 12}>ОТПРАВИТЬ</button>
                     </div>
-                    <div className="group">
-                        <input value={number !== "+7" ? number : ""} className="form-input" type="text" onChange={phoneNumberHandleChange} />
-                        <label className={`${number.length ? "shrink" : ""} form-input-label`}>ВАШ ТЕЛЕФОН</label>
-                    </div>
-                    {phoneNumberWarnMessage && <p>Неверный номер телефона</p>}
-                    <button onClick={submit} disabled={name === "" || number.length !== 12}>ОТПРАВИТЬ</button>
-                </div>
-                : <div className="finish__container">
-                    <h2>ЗАЯВКА ОТПРАВЛЕНА!</h2>
-                </div>}
+                    : <div className="finish__container">
+                        <h2>ЗАЯВКА ОТПРАВЛЕНА!</h2>
+                    </div>}
+            </ClickAwayListener>
         </div>
     )
 }
