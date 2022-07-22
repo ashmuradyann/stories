@@ -3,7 +3,7 @@ import { ClickAwayListener } from '@mui/material';
 
 import './form.scss'
 
-const Form = ({ close, setSubmited }) => {
+const Form = ({ close, setSubmited, setShowForm }) => {
 
     const [state, setState] = useState("form")
     const [name, setName] = useState("")
@@ -14,7 +14,8 @@ const Form = ({ close, setSubmited }) => {
         console.log("ИМЯ: " + name, "НОМЕР: " + number)
         setState("finish")
         setTimeout(() => {
-            close()
+            close && close()
+            setShowForm && setShowForm(false)
             setSubmited(true)
         }, 4000)
     }
@@ -33,7 +34,10 @@ const Form = ({ close, setSubmited }) => {
 
     return (
         <div className="form__wrapper">
-            <ClickAwayListener onClickAway={close}>
+            <ClickAwayListener onClickAway={() => {
+                close && close()
+                setShowForm && setShowForm(false)
+            }}>
                 {state === "form"
                     ? <div className="form__container">
                         <h3>МЫ СВЯЖЕМСЯ С ВАМИ</h3>

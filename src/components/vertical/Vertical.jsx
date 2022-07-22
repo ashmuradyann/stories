@@ -1,4 +1,9 @@
+import { useState } from 'react'
+
 import { Swiper, SwiperSlide } from "swiper/react"
+
+import Popup from '../horizontal/popup/Popup'
+import Form from '../horizontal/form/Form'
 
 import image1 from '../../assets/images/image1.jpg'
 import image2 from '../../assets/images/image2.jpg'
@@ -13,28 +18,73 @@ import './vertical.scss'
 
 const Vertical = () => {
 
-    const images = [
-        image1,
-        image2,
-        image3,
-        image4,
-        image5,
-        image6
-    ]
+    const [popup, setPopup] = useState(null)
+    const [submited, setSubmited] = useState(null)
+    const [showForm, setShowForm] = useState(null)
 
     return (
-        <div className="container">
-            <div className="wrapper">
-                <Swiper
-                    style={{ height: "fit-content", maxHeight: "700px" }}
-                    direction={"vertical"}
-                    className="mySwiper">
-                    {images.map((el, i) => {
-                        return <SwiperSlide><img src={el} alt="img" /></SwiperSlide>
-                    })}
-                </Swiper>
+        <>
+            <div className="container">
+                <div className="wrapper">
+                    <Swiper
+                        style={{ height: "fit-content", maxHeight: "700px" }}
+                        direction={"vertical"}
+                        className="mySwiper">
+                        <SwiperSlide>
+                            <div className="slide__wrapper">
+                                <img src={image1} alt="img" />
+                                <button className="seeMoreCollapsed" onClick={() => setPopup(true)}>
+                                    Подробнее
+                                </button>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <img src={image2} alt="img" />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="slide__wrapper">
+                                <img src={image3} alt="img" />
+                                <button className="seeMoreCollapsed first">
+                                    Кнопка
+                                </button>
+                                <button className="seeMoreCollapsed second">
+                                    Кнопка
+                                </button>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="slide__wrapper">
+                                <img src={image4} alt="img" />
+                                <button className="seeMoreCollapsed third">
+                                    Кнопка
+                                </button>
+                                <button className="seeMoreCollapsed fourth">
+                                    Кнопка
+                                </button>
+                                <button className="seeMoreCollapsed fifth">
+                                    Кнопка
+                                </button>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <img src={image5} alt="img" />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="slide__wrapper">
+                                <img src={image6} alt="img" />
+                                {showForm ? <div className="slide__form">
+                                    <Form setSubmited={setSubmited} setShowForm={setShowForm} />
+                                </div> : null}
+                                {<button style={submited && { pointerEvents: "none", animationName: "opacity" }} className="seeMoreCollapsed" onClick={() => setShowForm(true)}>
+                                    {!submited ? "Отправьте Заявку" : "Заявка Отправлено"}
+                                </button>}
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+                </div>
             </div>
-        </div>
+            {popup ? <Popup setPopup={setPopup} /> : null}
+        </>
     )
 }
 
