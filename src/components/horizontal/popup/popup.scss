@@ -10,15 +10,17 @@
     justify-content: center;
     align-items: center;
     transition: .2s;
-    animation-name: fading;
+    animation-name: fade-container;
     animation-duration: .2s;
-
+    
     .popup {
         width: 60%;
         height: 50%;
         background-color: #fff;
         border-radius: 15px;
         padding: 15px;
+        animation-name: fade-popup;
+        animation-duration: .5s;
 
         .popup_content_wrapper {
             overflow-y: auto;
@@ -56,9 +58,21 @@
     }
 }
 
-@keyframes fading {
+@keyframes fade-container {
     from { opacity: 0 }
     to { opacity: 1 }
+}
+
+@keyframes fade-popup {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 
 @media (max-width: 991px) {

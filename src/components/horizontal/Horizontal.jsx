@@ -71,6 +71,7 @@ const Horizontal = () => {
     image5,
     {
       url: image6,
+      duration: 10000,
       seeMore: ({ close }) => <Form close={close} setSubmited={setSubmited} />,
       seeMoreCollapsed: ({ toggleMore, action }) => (
         <div className="seeMore__wrapper">
