@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, memo } from 'react'
 import { ClickAwayListener } from '@mui/material';
 
 import './form.scss'
@@ -60,4 +60,4 @@ const Form = ({ close, setSubmited, setShowForm }) => {
     )
 }
 
-export default Form
+export default memo(Form)
