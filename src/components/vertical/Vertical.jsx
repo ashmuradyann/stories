@@ -1,4 +1,4 @@
-import { useState, memo } from 'react'
+import { useState, useRef, memo } from 'react'
 
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -20,6 +20,8 @@ const Vertical = ({ submited, setSubmited }) => {
 
     const [popup, setPopup] = useState(null)
     const [showForm, setShowForm] = useState(null)
+    const [count, setCount] = useState(0)
+    const swiperRef = useRef()
 
     return (
         <div className="container">
@@ -27,13 +29,17 @@ const Vertical = ({ submited, setSubmited }) => {
                 <Swiper
                     style={{ height: "fit-content", maxHeight: "700px" }}
                     direction={"vertical"}
-                    className="mySwiper">
+                    className="mySwiper"
+                    onSwiper={(swiper) => {
+                        swiperRef.current = swiper
+                    }}
+                    onSlideChange={() => setCount(swiperRef.current.activeIndex)}>
                     <SwiperSlide>
                         <div className="slide__wrapper">
                             <img src={image1} alt="img" />
-                            <button className="seeMoreCollapsed" onClick={() => setPopup(true)}>
+                            {count === 0 && <button className="seeMoreCollapsed" onClick={() => setPopup(true)}>
                                 Подробнее
-                            </button>
+                            </button>}
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
@@ -42,18 +48,18 @@ const Vertical = ({ submited, setSubmited }) => {
                     <SwiperSlide>
                         <div className="slide__wrapper">
                             <img src={image3} alt="img" />
-                            <button className="seeMoreCollapsed first">
+                            {count === 2 && <><button className="seeMoreCollapsed first">
                                 Кнопка
                             </button>
-                            <button className="seeMoreCollapsed second">
-                                Кнопка
-                            </button>
+                                <button className="seeMoreCollapsed second">
+                                    Кнопка
+                                </button></>}
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className="slide__wrapper">
                             <img src={image4} alt="img" />
-                            <button className="seeMoreCollapsed third">
+                            {count === 3 && <><button className="seeMoreCollapsed third">
                                 Кнопка
                             </button>
                             <button className="seeMoreCollapsed fourth">
@@ -61,7 +67,7 @@ const Vertical = ({ submited, setSubmited }) => {
                             </button>
                             <button className="seeMoreCollapsed fifth">
                                 Кнопка
-                            </button>
+                            </button></>}
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
@@ -72,7 +78,7 @@ const Vertical = ({ submited, setSubmited }) => {
                             <img src={image6} alt="img" />
                             {showForm ? <div className="slide__form">
                                 <Form setSubmited={setSubmited} setShowForm={setShowForm} />
-                            </div> : <button style={submited && { pointerEvents: "none", animationName: "opacity" }} className="seeMoreCollapsed" onClick={() => setShowForm(true)}>
+                            </div> : count === 5 && <button style={submited && { pointerEvents: "none", animationName: "opacity" }} className="seeMoreCollapsed" onClick={() => setShowForm(true)}>
                                 {!submited ? "Отправьте Заявку" : "Заявка Отправлена"}
                             </button>}
                         </div>
