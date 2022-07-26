@@ -17,6 +17,7 @@
 .seeMore__wrapper {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     
@@ -33,7 +34,7 @@
         color: #ebebeb;
         background: #333333;
         text-align: center;
-        transition: .3s;
+        transition: .3s all;
         transform: translateY(-20px);
         animation-name: button;
         animation-duration: .7s;
@@ -71,6 +72,10 @@
             animation-name: otherButton2;
             margin: 0 0 20px 0;
             transform: translateY(-120px);
+        }
+
+        &.lastBtn {
+            margin: 10px 0;
         }
     }
 

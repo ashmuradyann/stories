@@ -23,11 +23,20 @@ import './horizontal.scss'
 
 const Horizontal = ({ submited, setSubmited }) => {
 
+  const imagesArr = [
+    image1,
+    image2,
+    image3,
+    image4,
+    image5,
+    image6,
+  ]
+
   const lower410 = window.matchMedia('(max-width: 410px)')
 
   const [popup, setPopup] = useState(null)
-  const [firstPlay, setFirstPlay] = useState(false)
-  // const [lastStoryPlay, setLastStoryPlay] = useState(false)
+  const [firstPlay, setFirstPlay] = useState(null)
+  const [currentIndex, setCurrentIndex] = useState(null)
 
   useEffect(() => {
     setFirstPlay(true)
@@ -43,9 +52,10 @@ const Horizontal = ({ submited, setSubmited }) => {
         } else {
           action("")
         }
+        setCurrentIndex(false)
         return (
           <div style={popup ? { opacity: 0, transition: "0.3s" } : null} className="seeMore__wrapper">
-            <button className="seeMoreCollapsed" onClick={() => setPopup(true)}>
+            <button style={{}} className="seeMoreCollapsed" onClick={() => setPopup(true)}>
               Подробнее
             </button>
           </div>
@@ -97,9 +107,12 @@ const Horizontal = ({ submited, setSubmited }) => {
         action("pause")
         return (
           <div className="seeMore__wrapper">
-            {<button style={submited && { pointerEvents: "none", animationName: "opacity" }} className="seeMoreCollapsed" onClick={() => toggleMore(true)}>
+            {<button style={submited && { pointerEvents: "none", backgroundColor: "#909090" }} className="seeMoreCollapsed lastBtn" onClick={() => toggleMore(true)}>
               {!submited ? "Отправьте Заявку" : "Заявка Отправлена"}
             </button>}
+            <button className="seeMoreCollapsed lastBtn" onClick={() => setCurrentIndex(true)}>
+              Самое Начало
+            </button>
           </div>
         )
       }
@@ -110,12 +123,16 @@ const Horizontal = ({ submited, setSubmited }) => {
     <div className="container" onClick={() => setFirstPlay(false)}>
       <div className="wrapper">
         <Stories
+          currentIndex={currentIndex ? 0 : null}
           stories={images}
           width={lower410.matches ? "100vw" : "400px"}
           height={lower410.matches ? "100%" : "700px"}
           defaultInterval={5000}
         />
         {popup ? <Popup setPopup={setPopup} /> : null}
+      </div>
+      <div style={{display: "none"}}>
+        {imagesArr.map(imgSrc => <img src={imgSrc} alt="img" />)}
       </div>
     </div>
   )
