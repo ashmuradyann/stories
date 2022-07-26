@@ -1,4 +1,4 @@
-import { useState, memo } from 'react'
+import { useState, useEffect, memo } from 'react'
 
 import Stories from 'react-insta-stories'
 
@@ -26,13 +26,23 @@ const Horizontal = ({ submited, setSubmited }) => {
   const lower410 = window.matchMedia('(max-width: 410px)')
 
   const [popup, setPopup] = useState(null)
+  const [firstPlay, setFirstPlay] = useState(false)
+  // const [lastStoryPlay, setLastStoryPlay] = useState(false)
+
+  useEffect(() => {
+    setFirstPlay(true)
+  }, [])
 
   const images = [
     {
       url: image1,
       seeMore: () => null,
       seeMoreCollapsed: ({ action }) => {
-        action(popup ? "pause" : "")
+        if (popup || firstPlay) {
+          action("pause")
+        } else {
+          action("")
+        }
         return (
           <div style={popup ? { opacity: 0, transition: "0.3s" } : null} className="seeMore__wrapper">
             <button className="seeMoreCollapsed" onClick={() => setPopup(true)}>
@@ -46,20 +56,24 @@ const Horizontal = ({ submited, setSubmited }) => {
     {
       url: image3,
       seeMore: () => null,
-      seeMoreCollapsed: () => (
-        <div style={{ flexDirection: 'column' }} className="seeMore__wrapper">
-          <button className="seeMoreCollapsed otherButton fb">
-            <Facebook /> Мы в Facebook
-          </button>
-          <button className="seeMoreCollapsed otherButton inst">
-            <Instagram /> Мы в Instagram
-          </button>
-        </div>
-      )
+      duration: 15000,
+      seeMoreCollapsed: ({ action }) => {
+        return (
+          <div style={{ flexDirection: 'column' }} className="seeMore__wrapper">
+            <button className="seeMoreCollapsed otherButton fb">
+              <Facebook /> Мы в Facebook
+            </button>
+            <button className="seeMoreCollapsed otherButton inst">
+              <Instagram /> Мы в Instagram
+            </button>
+          </div>
+        )
+      }
     },
     {
       url: image4,
       seeMore: () => null,
+      duration: 15000,
       seeMoreCollapsed: () => (
         <div style={{ flexDirection: "column", paddingBottom: "20px" }} className="seeMore__wrapper">
           <button className="seeMoreCollapsed otherButton2 wp">
@@ -77,23 +91,25 @@ const Horizontal = ({ submited, setSubmited }) => {
     image5,
     {
       url: image6,
-      duration: 10000,
+      duration: 15000,
       seeMore: ({ close }) => <Form close={close} setSubmited={setSubmited} />,
-      seeMoreCollapsed: ({ toggleMore, action }) => (
-        <div className="seeMore__wrapper">
-          {<button style={submited && { pointerEvents: "none", animationName: "opacity" }} className="seeMoreCollapsed" onClick={() => toggleMore(true)}>
-            {!submited ? "Отправьте Заявку" : "Заявка Отправлена"}
-          </button>}
-        </div>
-      )
+      seeMoreCollapsed: ({ toggleMore, action }) => {
+        action("pause")
+        return (
+          <div className="seeMore__wrapper">
+            {<button style={submited && { pointerEvents: "none", animationName: "opacity" }} className="seeMoreCollapsed" onClick={() => toggleMore(true)}>
+              {!submited ? "Отправьте Заявку" : "Заявка Отправлена"}
+            </button>}
+          </div>
+        )
+      }
     }
   ]
 
   return (
-    <div className="container">
+    <div className="container" onClick={() => setFirstPlay(false)}>
       <div className="wrapper">
         <Stories
-          loop
           stories={images}
           width={lower410.matches ? "100vw" : "400px"}
           height={lower410.matches ? "100%" : "700px"}
