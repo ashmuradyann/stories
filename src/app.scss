@@ -5,7 +5,6 @@ main {
 
     .stories__wrapper {
         width: 40%;
-        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -35,7 +34,6 @@ main {
 
 @media (max-width: 1360px) {
     main {
-
         .stories__wrapper {
             width: 50%;
         }
@@ -44,7 +42,6 @@ main {
 
 @media (max-width: 960px) {
     main {
-
         .stories__wrapper {
             width: 100%;
         }

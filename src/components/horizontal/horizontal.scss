@@ -1,12 +1,13 @@
 .container {
-    width: fit-content;
     height: 100%;
 
     .wrapper {
         width: fit-content;
         display: flex;
-        justify-content: center;
-        align-items: center;
+
+        img {
+            height: calc(100% - 10px);
+        }
     }
 }
 
