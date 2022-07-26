@@ -1,0 +1,36 @@
+.info__wrapper {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    padding: 0 10% 0 5%;
+    flex-direction: column;
+    justify-content: center;
+
+    .info__container {
+        width: 100%;
+        height: 70vh;
+
+        h1 {
+            font-size: 3rem;
+        }
+    
+        h5 {
+            font-size: 1.4rem;
+            margin-top: 40px;
+        }
+    
+        .qr__block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15%;
+    
+            div {
+                p {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+
+}
