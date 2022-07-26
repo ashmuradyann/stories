@@ -28,6 +28,11 @@
             div {
                 p {
                     font-size: 1.2rem;
+                    margin: 5px 0;
+                }
+
+                p:last-child {
+                    margin-top: 25px;
                 }
             }
         }
