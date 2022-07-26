@@ -17,10 +17,10 @@ function App() {
   return (
     <main>
       <div className="stories__wrapper">
-        <div className="buttons__wrapper">
+        {/* <div className="buttons__wrapper">
           <div style={state === "horizontal" ? dark : light} onClick={() => setState("horizontal")}>Horizontal</div>
           <div style={state === "vertical" ? dark : light} onClick={() => setState("vertical")}>Vertical</div>
-        </div>
+        </div> */}
         {state === 'horizontal' && <Horizontal submited={submited} setSubmited={setSubmited} />}
         {state === 'vertical' && <Vertical submited={submited} setSubmited={setSubmited} />}
       </div>
