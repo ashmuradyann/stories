@@ -12,6 +12,12 @@ import image4 from '../../assets/images/image4.jpg'
 import image5 from '../../assets/images/image5.jpg'
 import image6 from '../../assets/images/image6.jpg'
 
+import { ReactComponent as Facebook } from './icons/facebook.svg'
+import { ReactComponent as Instagram } from './icons/instagram.svg'
+import { ReactComponent as Whatsapp } from './icons/whatsapp.svg'
+import { ReactComponent as Viber } from './icons/viber.svg'
+import { ReactComponent as Telegram } from './icons/telegram.svg'
+
 import './horizontal.scss'
 
 
@@ -42,11 +48,11 @@ const Horizontal = ({ submited, setSubmited }) => {
       seeMore: () => null,
       seeMoreCollapsed: () => (
         <div style={{ flexDirection: 'column' }} className="seeMore__wrapper">
-          <button className="seeMoreCollapsed otherButton">
-            Кнопка
+          <button className="seeMoreCollapsed otherButton fb">
+            <Facebook /> Мы в Facebook
           </button>
-          <button className="seeMoreCollapsed otherButton">
-            Кнопка
+          <button className="seeMoreCollapsed otherButton inst">
+            <Instagram /> Мы в Instagram
           </button>
         </div>
       )
@@ -56,14 +62,14 @@ const Horizontal = ({ submited, setSubmited }) => {
       seeMore: () => null,
       seeMoreCollapsed: () => (
         <div style={{ flexDirection: "column", paddingBottom: "20px" }} className="seeMore__wrapper">
-          <button className="seeMoreCollapsed otherButton2">
-            Кнопка
+          <button className="seeMoreCollapsed otherButton2 wp">
+            <Whatsapp /> наш WhatsApp
           </button>
-          <button className="seeMoreCollapsed otherButton2">
-            Кнопка
+          <button className="seeMoreCollapsed otherButton2 tg">
+            <Telegram /> наш Telegram
           </button>
-          <button className="seeMoreCollapsed otherButton2">
-            Кнопка
+          <button className="seeMoreCollapsed otherButton2 vb">
+            <Viber /> наш Viber
           </button>
         </div>
       )
