@@ -17,7 +17,7 @@ import './horizontal.scss'
 
 const Horizontal = ({ submited, setSubmited }) => {
 
-  const mediaMatch = window.matchMedia('(max-width: 410px)')
+  const lower410 = window.matchMedia('(max-width: 410px)')
 
   const [popup, setPopup] = useState(null)
 
@@ -89,8 +89,8 @@ const Horizontal = ({ submited, setSubmited }) => {
         <Stories
           loop
           stories={images}
-          width={mediaMatch.matches ? "100vw" : "400px"}
-          height={mediaMatch.matches ? "100%" : "700px"}
+          width={lower410.matches ? "100vw" : "400px"}
+          height={lower410.matches ? "100%" : "700px"}
           defaultInterval={5000}
         />
         {popup ? <Popup setPopup={setPopup} /> : null}

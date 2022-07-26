@@ -4,18 +4,19 @@ main {
     display: flex;
 
     .stories__wrapper {
-        width: 50%;
+        width: 40%;
         height: 100%;
         display: flex;
-        background-color: #dcdcdc;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
+        background-color: #dcdcdc;
         font-family: 'Montserrat', sans-serif;
         font-weight: 300;
-    
+
         .buttons__wrapper {
             display: flex;
-    
+
             div {
                 border: 2px solid #a1a1a1;
                 width: 100px;
@@ -28,6 +29,24 @@ main {
                 cursor: pointer;
                 transition: .2s;
             }
+        }
+    }
+}
+
+@media (max-width: 1360px) {
+    main {
+
+        .stories__wrapper {
+            width: 50%;
+        }
+    }
+}
+
+@media (max-width: 960px) {
+    main {
+
+        .stories__wrapper {
+            width: 100%;
         }
     }
 }
