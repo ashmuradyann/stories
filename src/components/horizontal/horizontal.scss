@@ -20,7 +20,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     .seeMoreCollapsed {
         border: none;
         outline: none;
@@ -43,26 +43,6 @@
         user-select: none;
         cursor: pointer;
 
-        &.inst {
-            background: #d83364;
-        }
-
-        &.fb {
-            background: #1673ea;
-        }
-
-        &.wp {
-            background: #48c857;
-        }
-
-        &.tg {
-            background: #27a3e1;
-        }
-
-        &.vb {
-            background: #7d539f;
-        }
-
         &.otherButton {
             animation-name: otherButton;
             margin: 0 0 15px 0;
@@ -71,40 +51,16 @@
         &.otherButton2 {
             animation-name: otherButton2;
             margin: 0 0 20px 0;
-            transform: translateY(-120px);
-        }
-
-        &.lastBtn {
-            margin: 10px 0;
+            transform: translateY(-100px);
         }
     }
 
-    .seeMoreCollapsed > * {
+    .seeMoreCollapsed>* {
         margin: 0 10px;
     }
 
     .seeMoreCollapsed:hover {
-        background: #030303;
-
-        &.inst {
-            background: #8b2141;
-        }
-
-        &.fb {
-            background: #1053aa;
-        }
-
-        &.wp {
-            background: #338d3e;
-        }
-
-        &.tg {
-            background: #1c74a0;
-        }
-
-        &.vb {
-            background: #4c3361;
-        }
+        filter: brightness(0.8);
     }
 }
 
