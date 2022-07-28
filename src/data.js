@@ -3,35 +3,15 @@ import image2 from './assets/images/image2.jpg'
 import image3 from './assets/images/image3.jpg'
 import image4 from './assets/images/image4.jpg'
 import image5 from './assets/images/image5.jpg'
-import image6 from './assets/images/image6.jpg'
 
 export const DATA = [
     {
+        id: 0,
         url: image1,
-        duration: 15000,
+        duration: 5000,
         paused: false,
         popup: {
-            needed: true,
-            data: {
-                button: {
-                    text: "Подробнее",
-                    backgroundColor: "#333333",
-                    iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.svg"
-                },
-                h1: "Заголовок",
-                text: [{
-                    h2: "Заголовокh2",
-                    p: "It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia"
-                },
-                {
-                    h2: "Заголовокh2",
-                    p: "Contrary to popular belief, Lorem Ipsum is not simply random text."
-                },
-                {
-                    h2: "Заголовокh2",
-                    p: "from sections 1.10.32 and 1.10.33 of (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,comes from a line in section 1.10.32."
-                }],
-            }
+            needed: false
         },
         buttons: {
             needed: false,
@@ -41,11 +21,24 @@ export const DATA = [
         }
     },
     {
+        id: 1,
         url: image2,
         duration: 5000,
         paused: false,
         popup: {
-            needed: false
+            needed: true,
+            data: {
+                button: {
+                    text: "Подробнее",
+                    backgroundColor: "#333333",
+                    iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.svg"
+                },
+                h1: "Если хочется сказать",
+                text: [{
+                    h2: undefined,
+                    p: "Краткость - сестра таланта. Но иногда предложение может быть на столько интересным, что парой фраз не обойтись. Тогда не стоит молчать - дайте своему пользователю максимальное количество необходимой информции."
+                }],
+            }
         },
         buttons: {
             needed: false
@@ -55,6 +48,7 @@ export const DATA = [
         }
     },
     {
+        id: 2,
         url: image3,
         duration: 5000,
         paused: false,
@@ -62,25 +56,14 @@ export const DATA = [
             needed: false
         },
         buttons: {
-            needed: true,
-            buttonData: [
-                {
-                    text: "Мы в Facebook",
-                    backgroundColor: "#1673ea",
-                    iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.svg"
-                },
-                {
-                    text: "Мы в Instagram",
-                    backgroundColor: "#d83364",
-                    iconUrl: "https://img.icons8.com/material-outlined/24/ffffff/instagram-new--v1.svg"
-                },
-            ]
+            needed: false,
         },
         form: {
             needed: false
         }
     },
     {
+        id: 3,
         url: image4,
         duration: 5000,
         paused: false,
@@ -93,17 +76,14 @@ export const DATA = [
                 {
                     text: "наш WhatsApp",
                     backgroundColor: "#48c857",
+                    link: "https://api.whatsapp.com/send?phone=79066715422",
                     iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.svg"
                 },
                 {
                     text: "наш Telegram",
                     backgroundColor: "#27a3e1",
+                    link: "https://t.me/easy_int",
                     iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/telegram-app.svg"
-                },
-                {
-                    text: "наш Viber",
-                    backgroundColor: "#7d539f",
-                    iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/viber.png"
                 },
             ]
         },
@@ -112,22 +92,9 @@ export const DATA = [
         }
     },
     {
+        id: 4,
         url: image5,
         duration: 5000,
-        paused: false,
-        popup: {
-            needed: false
-        },
-        buttons: {
-            needed: false,
-        },
-        form: {
-            needed: false
-        }
-    },
-    {
-        url: image6,
-        duration: 10000,
         paused: true,
         popup: {
             needed: false

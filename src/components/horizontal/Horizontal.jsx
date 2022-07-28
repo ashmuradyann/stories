@@ -19,6 +19,10 @@ const Horizontal = ({ submited, setSubmited }) => {
   })
 
   const [firstPlay, setFirstPlay] = useState(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [allEnded, setAllEnded] = useState(null)
+
+  console.log(currentIndex)
 
   useEffect(() => {
     setFirstPlay(true)
@@ -27,9 +31,10 @@ const Horizontal = ({ submited, setSubmited }) => {
   const readyToRend = DATA.map((slide, i) => {
     return {
       url: slide.url,
-      duration: 5000,
+      duration: slide.duration,
       seeMore: slide.form.needed ? ({ close }) => <Form close={close} setSubmited={setSubmited} /> : slide.popup ? () => null : null,
       seeMoreCollapsed: ({ toggleMore, action }) => {
+        setCurrentIndex(null)
         if (popup.bool || firstPlay || slide.paused) {
           action("pause")
         } else {
@@ -48,7 +53,7 @@ const Horizontal = ({ submited, setSubmited }) => {
           return (
             <div className="seeMore__wrapper">
               {slide.buttons.buttonData.map(({ text, backgroundColor, iconUrl }, i) => {
-                return <button style={{ backgroundColor: backgroundColor }} className="seeMoreCollapsed otherButton">
+                return <button key={i} style={{ backgroundColor: backgroundColor }} className="seeMoreCollapsed otherButton">
                   <img src={iconUrl} alt={i} /> {text}
                 </button>
               })}
@@ -69,12 +74,22 @@ const Horizontal = ({ submited, setSubmited }) => {
   })
 
   return (
-    <div className="container" onClick={() => setFirstPlay(false)}>
+    <div className="container" onClick={() => {
+        if(firstPlay) {
+          setFirstPlay(false)
+          setCurrentIndex(1)
+        }
+        if(allEnded) {
+          setCurrentIndex(4)
+        }
+      }}>
       <div className="wrapper">
         <Stories
+          currentIndex={currentIndex}
           stories={readyToRend}
           width={lower410.matches ? "100vw" : "400px"}
           height={lower410.matches ? "100%" : "700px"}
+          onAllStoriesEnd={() => setAllEnded(true)}
           defaultInterval={5000}
         />
         {popup.bool ? <Popup popup={popup} setPopup={setPopup} /> : null}

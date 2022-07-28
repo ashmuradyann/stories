@@ -7,8 +7,8 @@ const Information = () => {
     return (
         <div className="info__wrapper">
             <div className="info__container">
-                <h1>Простая партнёрская программа для бизнеса</h1>
-                <h5>Привлекайте новых клиентов без вложений в рекламу!</h5>
+                <h1>Попробуйте промо сайт в формате сторис</h1>
+                <h5>Привычный и полюбившийся пользователям формат с вашим торговым предложением. Попробуйте бесплатно.</h5>
                 <div className="qr__block">
                     <img src={`http://api.qrserver.com/v1/create-qr-code/?data=${url}&size=200x200`} alt="QrCode" />
                     <div>

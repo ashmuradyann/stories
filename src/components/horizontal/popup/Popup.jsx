@@ -17,7 +17,7 @@ const Popup = ({ popup, setPopup }) => {
                         </div>
                         {popup.data.text.map(({h2, p}, i) => (
                             <div key={i} className="content">
-                                <h2>{h2}</h2>
+                                {h2 ? <h2>{h2}</h2> : null}
                                 <p>{p}</p>
                             </div>
                         ))}
