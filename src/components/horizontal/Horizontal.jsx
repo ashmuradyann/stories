@@ -27,10 +27,13 @@ const Horizontal = ({ submited, setSubmited }) => {
   console.log(currentIndex)
 
   useEffect(() => {
-    if(waiter) {
-      setTimeout(() => {
+    const id = setTimeout(() => {
+      if (waiter) {
         setFirstPlay(true)
-      }, 4900)
+      }
+    }, 4900)
+    if (!waiter) {
+      clearTimeout(id)
     }
   }, [])
 
@@ -85,9 +88,9 @@ const Horizontal = ({ submited, setSubmited }) => {
         }
         if (slide.playAfterPause) {
           return <div style={{ width: "100%", height: "700px" }} onClick={(e) => {
-              setFirstPlay(false)
-              setCurrentIndex(1)
-              setWaiter(false)
+            setFirstPlay(false)
+            setCurrentIndex(1)
+            setWaiter(false)
           }}></div>
         }
       }
