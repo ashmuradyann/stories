@@ -10,6 +10,7 @@ export const DATA = [
         url: image1,
         duration: 5000,
         paused: false,
+        playAfterPause: true,
         popup: {
             needed: false
         },
@@ -25,6 +26,7 @@ export const DATA = [
         url: image2,
         duration: 5000,
         paused: false,
+        playAfterPause: false,
         popup: {
             needed: true,
             data: {
@@ -52,6 +54,7 @@ export const DATA = [
         url: image3,
         duration: 5000,
         paused: false,
+        playAfterPause: false,
         popup: {
             needed: false
         },
@@ -67,6 +70,7 @@ export const DATA = [
         url: image4,
         duration: 5000,
         paused: false,
+        playAfterPause: false,
         popup: {
             needed: false
         },
@@ -96,6 +100,7 @@ export const DATA = [
         url: image5,
         duration: 5000,
         paused: false,
+        playAfterPause: false,
         popup: {
             needed: false
         },

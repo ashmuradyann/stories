@@ -21,20 +21,21 @@ const Horizontal = ({ submited, setSubmited }) => {
   const [firstPlay, setFirstPlay] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [allEnded, setAllEnded] = useState(null)
+  const [showForm, setShowForm] = useState(null)
 
   console.log(currentIndex)
 
   useEffect(() => {
     setTimeout(() => {
       setFirstPlay(true)
-    }, 4999)
+    }, 4900)
   }, [])
 
   const readyToRend = DATA.map((slide, i) => {
     return {
       url: slide.url,
       duration: slide.duration,
-      seeMore: slide.form.needed ? ({ close }) => <Form close={close} setSubmited={setSubmited} /> : slide.popup ? () => null : null,
+      seeMore: slide.form.needed ? ({ close }) => <Form close={close} setSubmited={setSubmited} setShowForm={setShowForm} /> : slide.popup ? () => null : null,
       seeMoreCollapsed: ({ toggleMore, action }) => {
         setCurrentIndex(null)
         if (popup.bool || firstPlay || slide.paused || allEnded) {
@@ -54,9 +55,9 @@ const Horizontal = ({ submited, setSubmited }) => {
         if (slide.buttons.needed) {
           return (
             <div className="seeMore__wrapper">
-              {slide.buttons.buttonData.map(({ text, backgroundColor, iconUrl }, i) => {
+              {slide.buttons.buttonData.map(({ text, backgroundColor, link, iconUrl }, i) => {
                 return <button key={i} style={{ backgroundColor: backgroundColor }} className="seeMoreCollapsed otherButton">
-                  <img src={iconUrl} alt={i} /> {text}
+                  <a href={link}><img src={iconUrl} alt={i} />{text}</a>
                 </button>
               })}
             </div>
@@ -64,28 +65,34 @@ const Horizontal = ({ submited, setSubmited }) => {
         }
         if (slide.form.needed) {
           return (
-            <div className="seeMore__wrapper">
-              {<button style={submited ? { pointerEvents: "none", backgroundColor: "#808080" } : { backgroundColor: slide.form.toggleButton.backgroundColor }} className="seeMoreCollapsed" onClick={() => toggleMore(true)}>
+            <div style={{ width: "100%", height: "700px" }} className="seeMore__wrapper" onClick={(e) => {
+              if (e.pageY < 607 && !showForm) {
+                setAllEnded(false)
+                setCurrentIndex(3)
+              }
+            }}>
+              {<button style={submited ? { pointerEvents: "none", backgroundColor: "#808080" } : { backgroundColor: slide.form.toggleButton.backgroundColor, marginTop: "600px" }} className="seeMoreCollapsed" onClick={() => {
+                toggleMore(true)
+                setShowForm(true)
+              }}>
                 {!submited ? "Отправьте Заявку" : "Заявка Отправлена"}
               </button>}
             </div>
           )
+        }
+        if (slide.playAfterPause) {
+          return <div style={{ width: "100%", height: "700px" }} onClick={(e) => {
+              setFirstPlay(false)
+              setCurrentIndex(1)
+            
+          }}></div>
         }
       }
     }
   })
 
   return (
-    <div className="container" onClick={() => {
-        if(firstPlay) {
-          setFirstPlay(false)
-          setCurrentIndex(1)
-        }
-        if(allEnded) {
-          setAllEnded(false)
-          setCurrentIndex(3)
-        }
-      }}>
+    <div className="container">
       <div className="wrapper">
         <Stories
           currentIndex={currentIndex}
