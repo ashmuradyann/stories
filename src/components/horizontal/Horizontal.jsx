@@ -22,13 +22,16 @@ const Horizontal = ({ submited, setSubmited }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [allEnded, setAllEnded] = useState(null)
   const [showForm, setShowForm] = useState(null)
+  const [waiter, setWaiter] = useState(true)
 
   console.log(currentIndex)
 
   useEffect(() => {
-    setTimeout(() => {
-      setFirstPlay(true)
-    }, 4900)
+    if(waiter) {
+      setTimeout(() => {
+        setFirstPlay(true)
+      }, 4900)
+    }
   }, [])
 
   const readyToRend = DATA.map((slide, i) => {
@@ -84,7 +87,7 @@ const Horizontal = ({ submited, setSubmited }) => {
           return <div style={{ width: "100%", height: "700px" }} onClick={(e) => {
               setFirstPlay(false)
               setCurrentIndex(1)
-            
+              setWaiter(false)
           }}></div>
         }
       }
