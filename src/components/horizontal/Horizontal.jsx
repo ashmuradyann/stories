@@ -2,7 +2,7 @@ import { useState, useEffect, memo } from 'react'
 
 import { DATA } from '../../data'
 
-import Stories from 'react-insta-stories'
+import Stories, { WithSeeMore } from 'react-insta-stories'
 
 import Form from './form/Form'
 import Popup from './popup/Popup'
@@ -18,33 +18,28 @@ const Horizontal = ({ submited, setSubmited }) => {
     data: []
   })
 
-  const [firstPlay, setFirstPlay] = useState(null)
+  const [pause, setPause] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [allEnded, setAllEnded] = useState(null)
   const [showForm, setShowForm] = useState(null)
   const [waiter, setWaiter] = useState(true)
 
-  console.log(currentIndex)
-
-  useEffect(() => {
-    const id = setTimeout(() => {
-      if (waiter) {
-        setFirstPlay(true)
-      }
-    }, 4900)
-    if (!waiter) {
-      clearTimeout(id)
-    }
-  }, [])
-
   const readyToRend = DATA.map((slide, i) => {
     return {
-      url: slide.url,
+      content: ({ action, story }) => {
+        return (
+          <WithSeeMore story={story} action={action}>
+            <div className="story__wrapper" style={{ backgroundImage: `url(${slide.url})` }}>
+              {/* <div style={{ width: '100%', height: '100%' }}></div> */}
+            </div>
+          </WithSeeMore>
+        )
+      },
       duration: slide.duration,
       seeMore: slide.form.needed ? ({ close }) => <Form close={close} setSubmited={setSubmited} setShowForm={setShowForm} /> : slide.popup ? () => null : null,
       seeMoreCollapsed: ({ toggleMore, action }) => {
         setCurrentIndex(null)
-        if (popup.bool || firstPlay || slide.paused || allEnded) {
+        if (popup.bool || pause || slide.paused || allEnded) {
           action("pause")
         } else {
           action("")
@@ -86,13 +81,13 @@ const Horizontal = ({ submited, setSubmited }) => {
             </div>
           )
         }
-        if (slide.playAfterPause) {
-          return <div style={{ width: "100%", height: "700px" }} onClick={(e) => {
-            setFirstPlay(false)
-            setCurrentIndex(1)
-            setWaiter(false)
-          }}></div>
-        }
+        // if (slide.playAfterPause) {
+        //   return <div style={{ width: "100%", height: "700px" }} onClick={(e) => {
+        //     setPause(false)
+        //     setCurrentIndex(1)
+        //     setWaiter(false)
+        //   }}></div>
+        // }
       }
     }
   })
@@ -263,7 +258,7 @@ const Horizontal = ({ submited, setSubmited }) => {
   // ]
 
   // return (
-  //   <div className="container" onClick={() => setFirstPlay(false)}>
+  //   <div className="container" onClick={() => setPause(false)}>
   //     <div className="wrapper">
   //       <Stories
   //         stories={images}
