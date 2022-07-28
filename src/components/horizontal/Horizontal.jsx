@@ -47,7 +47,7 @@ const Horizontal = ({ submited, setSubmited }) => {
       },
       seeMoreCollapsed: ({ toggleMore, action }) => {
         setCurrentIndex(null)
-        if (popup.bool === true || pause || slide.paused || allEnded) {
+        if (popup.bool || slide.paused || allEnded) {
           action("pause")
         } else {
           action("")
@@ -55,7 +55,10 @@ const Horizontal = ({ submited, setSubmited }) => {
         if (slide.popup.needed) {
           return (
             <div key={i} style={popup.bool ? { opacity: 0, transition: "0.3s" } : null} className="seeMore__wrapper">
-              <button style={{ backgroundColor: slide.popup.data.button.backgroundColor }} className="seeMoreCollapsed popup" onClick={() => setPopup({ ...popup, bool: true, data: slide.popup.data })}>
+              <button style={{ backgroundColor: slide.popup.data.button.backgroundColor }} className="seeMoreCollapsed popup" onClick={() => {
+                toggleMore(true)
+                setPopup({ ...popup, bool: true, data: slide.popup.data })
+              }}>
                 {slide.popup.data.button.text}
               </button>
             </div>
