@@ -35,7 +35,7 @@ const Horizontal = ({ submited, setSubmited }) => {
       seeMore: slide.form.needed ? ({ close }) => <Form close={close} setSubmited={setSubmited} /> : slide.popup ? () => null : null,
       seeMoreCollapsed: ({ toggleMore, action }) => {
         setCurrentIndex(null)
-        if (popup.bool || firstPlay || slide.paused) {
+        if (popup.bool || firstPlay || slide.paused || allEnded) {
           action("pause")
         } else {
           action("")
@@ -80,7 +80,8 @@ const Horizontal = ({ submited, setSubmited }) => {
           setCurrentIndex(1)
         }
         if(allEnded) {
-          setCurrentIndex(4)
+          setAllEnded(false)
+          setCurrentIndex(3)
         }
       }}>
       <div className="wrapper">

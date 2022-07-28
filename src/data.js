@@ -95,7 +95,7 @@ export const DATA = [
         id: 4,
         url: image5,
         duration: 5000,
-        paused: true,
+        paused: false,
         popup: {
             needed: false
         },
