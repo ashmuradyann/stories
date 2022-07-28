@@ -18,28 +18,36 @@ const Horizontal = ({ submited, setSubmited }) => {
     data: []
   })
 
+  console.log(popup)
+
   const [pause, setPause] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [allEnded, setAllEnded] = useState(null)
   const [showForm, setShowForm] = useState(null)
-  const [waiter, setWaiter] = useState(true)
 
   const readyToRend = DATA.map((slide, i) => {
     return {
       content: ({ action, story }) => {
         return (
-          <WithSeeMore story={story} action={action}>
+          <WithSeeMore story={story} action={action} >
             <div className="story__wrapper" style={{ backgroundImage: `url(${slide.url})` }}>
               {/* <div style={{ width: '100%', height: '100%' }}></div> */}
+              <div key={i} style={popup.bool ? { opacity: 0, transition: "0.3s" } : null} className="seeMore__wrapper">
+              </div>
             </div>
           </WithSeeMore>
         )
       },
       duration: slide.duration,
-      seeMore: slide.form.needed ? ({ close }) => <Form close={close} setSubmited={setSubmited} setShowForm={setShowForm} /> : slide.popup ? () => null : null,
+      seeMore: ({ close }) => {
+        if (slide.form.needed) {
+          return <Form close={close} setSubmited={setSubmited} />
+        }
+        return <div>a</div>
+      },
       seeMoreCollapsed: ({ toggleMore, action }) => {
         setCurrentIndex(null)
-        if (popup.bool || pause || slide.paused || allEnded) {
+        if (popup.bool === true || pause || slide.paused || allEnded) {
           action("pause")
         } else {
           action("")
@@ -66,7 +74,7 @@ const Horizontal = ({ submited, setSubmited }) => {
         }
         if (slide.form.needed) {
           return (
-            <div style={{ width: "100%", height: "700px" }} className="seeMore__wrapper" onClick={(e) => {
+            <div className="seeMore__wrapper" onClick={(e) => {
               if (e.pageY < 607 && !showForm) {
                 setAllEnded(false)
                 setCurrentIndex(3)
@@ -74,7 +82,6 @@ const Horizontal = ({ submited, setSubmited }) => {
             }}>
               {<button style={submited ? { pointerEvents: "none", backgroundColor: "#808080" } : { backgroundColor: slide.form.toggleButton.backgroundColor, marginTop: "600px" }} className="seeMoreCollapsed" onClick={() => {
                 toggleMore(true)
-                setShowForm(true)
               }}>
                 {!submited ? "Отправьте Заявку" : "Заявка Отправлена"}
               </button>}

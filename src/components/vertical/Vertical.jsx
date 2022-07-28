@@ -10,7 +10,6 @@ import image2 from '../../assets/images/image2.jpg'
 import image3 from '../../assets/images/image3.jpg'
 import image4 from '../../assets/images/image4.jpg'
 import image5 from '../../assets/images/image5.jpg'
-import image6 from '../../assets/images/image6.jpg'
 
 import "swiper/css/bundle"
 import "swiper/css"
@@ -71,11 +70,8 @@ const Vertical = ({ submited, setSubmited }) => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={image5} alt="img" />
-                    </SwiperSlide>
-                    <SwiperSlide>
                         <div className="slide__wrapper">
-                            <img src={image6} alt="img" />
+                            <img src={image5} alt="img" />
                             {showForm ? <div className="slide__form">
                                 <Form setSubmited={setSubmited} setShowForm={setShowForm} />
                             </div> : count === 5 && <button style={submited && { pointerEvents: "none", animationName: "opacity" }} className="seeMoreCollapsed" onClick={() => setShowForm(true)}>
