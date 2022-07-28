@@ -25,7 +25,9 @@ const Horizontal = ({ submited, setSubmited }) => {
   console.log(currentIndex)
 
   useEffect(() => {
-    setFirstPlay(true)
+    setTimeout(() => {
+      setFirstPlay(true)
+    }, 4999)
   }, [])
 
   const readyToRend = DATA.map((slide, i) => {
