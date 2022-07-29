@@ -15,6 +15,7 @@ const Horizontal = ({ submited, setSubmited }) => {
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [allEnded, setAllEnded] = useState(null)
+  const [hold, setHold] = useState(null)
 
   const readyToRend = DATA.map((slide, i) => {
     return {
@@ -22,7 +23,7 @@ const Horizontal = ({ submited, setSubmited }) => {
         return (
           <WithSeeMore story={story} action={action} >
             <div className="story__wrapper">
-            {/* <div className="story__wrapper" style={{ backgroundImage: `url(${slide.url})` }}> */}
+              {/* <div className="story__wrapper" style={{ backgroundImage: `url(${slide.url})` }}> */}
               <img src={slide.url} />
             </div>
           </WithSeeMore>
@@ -40,7 +41,7 @@ const Horizontal = ({ submited, setSubmited }) => {
       },
       seeMoreCollapsed: ({ toggleMore, action, isPaused }) => {
         setCurrentIndex(null)
-        if (slide.paused || allEnded) {
+        if (slide.paused || allEnded || hold) {
           action("pause")
         } else {
           action("")
@@ -94,9 +95,34 @@ const Horizontal = ({ submited, setSubmited }) => {
     }
   })
 
+  // const hold = (e, f, t, g) => {
+  //   let holder;
+  //   e.addEventListener("mousedown", function (r) {
+  //     holder = setTimeout(function () {
+  //       f.call(e, r);
+  //       holder = true;
+  //     }, t || 2000)
+  //   });
+  //   document.addEventListener("mouseup", function (r) {
+  //     holder === true ? g && g.call(e, r)
+  //       : clearTimeout(holder);
+  //   });
+  // }
+
+  var holder
+
   return (
     <div className="container">
-      <div className="wrapper">
+      <div className="wrapper" onMouseDown={() => {
+        holder = setTimeout(() => {
+          console.log("mouseDown")
+          setHold(true)
+          holder = true
+        }, 100)
+      }} onMouseUp={() => {
+        holder ? setHold(false) && console.log("mouseUp") : clearTimeout(holder)
+        setHold(false)
+      }}>
         <Stories
           currentIndex={currentIndex}
           stories={readyToRend}
