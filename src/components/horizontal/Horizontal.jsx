@@ -21,9 +21,9 @@ const Horizontal = ({ submited, setSubmited }) => {
       content: ({ action, story }) => {
         return (
           <WithSeeMore story={story} action={action} >
-            <div className="story__wrapper" style={{ backgroundImage: `url(${slide.url})` }}>
-              <div key={i} className="seeMore__wrapper">
-              </div>
+            <div className="story__wrapper">
+            {/* <div className="story__wrapper" style={{ backgroundImage: `url(${slide.url})` }}> */}
+              <img src={slide.url} />
             </div>
           </WithSeeMore>
         )
@@ -101,7 +101,7 @@ const Horizontal = ({ submited, setSubmited }) => {
           currentIndex={currentIndex}
           stories={readyToRend}
           width={lower410.matches ? "100vw" : "400px"}
-          height={lower410.matches ? "100%" : "700px"}
+          height={lower410.matches ? "690px" : "700px"}
           onAllStoriesEnd={() => setAllEnded(true)}
           defaultInterval={5000}
         />
