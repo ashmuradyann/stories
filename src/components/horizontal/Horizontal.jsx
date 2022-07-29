@@ -1,4 +1,4 @@
-import { useState, useEffect, memo } from 'react'
+import { useState, memo } from 'react'
 
 import { DATA } from '../../data'
 
@@ -24,7 +24,7 @@ const Horizontal = ({ submited, setSubmited }) => {
           <WithSeeMore story={story} action={action} >
             <div className="story__wrapper">
               {/* <div className="story__wrapper" style={{ backgroundImage: `url(${slide.url})` }}> */}
-              <img src={slide.url} />
+              <img src={slide.url} alt={slide.id} />
             </div>
           </WithSeeMore>
         )
@@ -113,13 +113,14 @@ const Horizontal = ({ submited, setSubmited }) => {
 
   return (
     <div className="container">
-      <div className="wrapper" onMouseDown={() => {
+      <div className="wrapper" onMouseDown={(e) => {
         holder = setTimeout(() => {
-          console.log("mouseDown")
-          setHold(true)
-          holder = true
+          if (e.pageY < 577) {
+            setHold(true)
+            holder = true
+          }
         }, 100)
-      }} onMouseUp={() => {
+      }} onMouseUp={(e) => {
         holder ? setHold(false) && console.log("mouseUp") : clearTimeout(holder)
         setHold(false)
       }}>
