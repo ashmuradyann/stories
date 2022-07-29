@@ -22,9 +22,6 @@
                 width: 100%;
             }
         }
-        // img {
-        //     height: calc(100% - 10px);
-        // }
     }
 }
 
@@ -44,7 +41,7 @@
         align-items: center;
         width: 60%;
         height: 50px;
-        margin: 50px auto;
+        margin: 25px auto;
         color: #ebebeb;
         background: #333333;
         text-align: center;
@@ -57,8 +54,8 @@
         user-select: none;
         cursor: pointer;
 
-        &.otherButton {
-            animation-name: otherButton;
+        &.link {
+            animation-name: link;
             margin: 0 0 15px 0;
         }
 
@@ -96,7 +93,7 @@
     }
 }
 
-@keyframes otherButton {
+@keyframes link {
     from {
         transform: translateY(20px);
         opacity: 0;

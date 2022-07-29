@@ -98,14 +98,14 @@ export const DATA = [
     {
         id: 4,
         url: image5,
-        duration: 5000,
+        duration: 3000,
         paused: false,
         playAfterPause: false,
         popup: {
             needed: false
         },
         buttons: {
-            needed: false,
+            needed: false
         },
         form: {
             needed: true,
