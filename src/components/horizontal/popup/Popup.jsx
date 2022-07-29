@@ -4,18 +4,18 @@ import './popup.scss'
 
 import CloseSvg from './CloseSvg'
 
-const Popup = ({ popup, setPopup }) => {
+const Popup = ({ data, close }) => {
 
     return (
         <div className="popup__container">
-            <ClickAwayListener onClickAway={() => setPopup({ ...popup, bool: false })}>
+            <ClickAwayListener onClickAway={close}>
                 <div className="popup">
                     <div className="popup_content_wrapper">
                         <div className="popup__heading">
-                            <h1>{popup.data.h1}</h1>
-                            <div onClick={() => setPopup({ ...popup, bool: false })}><CloseSvg /></div>
+                            <h1>{data?.h1}</h1>
+                            <div onClick={close}><CloseSvg /></div>
                         </div>
-                        {popup.data.text.map(({h2, p}, i) => (
+                        {data?.text?.map(({h2, p}, i) => (
                             <div key={i} className="content">
                                 {h2 ? <h2>{h2}</h2> : null}
                                 <p>{p}</p>

@@ -13,17 +13,8 @@ const Horizontal = ({ submited, setSubmited }) => {
 
   const lower410 = window.matchMedia('(max-width: 410px)')
 
-  const [popup, setPopup] = useState({
-    bool: false,
-    data: []
-  })
-
-  console.log(popup)
-
-  const [pause, setPause] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [allEnded, setAllEnded] = useState(null)
-  const [showForm, setShowForm] = useState(null)
 
   const readyToRend = DATA.map((slide, i) => {
     return {
@@ -31,8 +22,7 @@ const Horizontal = ({ submited, setSubmited }) => {
         return (
           <WithSeeMore story={story} action={action} >
             <div className="story__wrapper" style={{ backgroundImage: `url(${slide.url})` }}>
-              {/* <div style={{ width: '100%', height: '100%' }}></div> */}
-              <div key={i} style={popup.bool ? { opacity: 0, transition: "0.3s" } : null} className="seeMore__wrapper">
+              <div key={i} className="seeMore__wrapper">
               </div>
             </div>
           </WithSeeMore>
@@ -43,21 +33,23 @@ const Horizontal = ({ submited, setSubmited }) => {
         if (slide.form.needed) {
           return <Form close={close} setSubmited={setSubmited} />
         }
+        if (slide.popup.needed) {
+          return <Popup data={slide.popup.data} close={close} />
+        }
         return <div>a</div>
       },
-      seeMoreCollapsed: ({ toggleMore, action }) => {
+      seeMoreCollapsed: ({ toggleMore, action, isPaused }) => {
         setCurrentIndex(null)
-        if (popup.bool || slide.paused || allEnded) {
+        if (slide.paused || allEnded) {
           action("pause")
         } else {
           action("")
         }
         if (slide.popup.needed) {
           return (
-            <div key={i} style={popup.bool ? { opacity: 0, transition: "0.3s" } : null} className="seeMore__wrapper">
+            <div key={i} className="seeMore__wrapper">
               <button style={{ backgroundColor: slide.popup.data.button.backgroundColor }} className="seeMoreCollapsed popup" onClick={() => {
                 toggleMore(true)
-                setPopup({ ...popup, bool: true, data: slide.popup.data })
               }}>
                 {slide.popup.data.button.text}
               </button>
@@ -78,7 +70,7 @@ const Horizontal = ({ submited, setSubmited }) => {
         if (slide.form.needed) {
           return (
             <div className="seeMore__wrapper" onClick={(e) => {
-              if (e.pageY < 607 && !showForm) {
+              if (e.pageY < 607 && !isPaused) {
                 setAllEnded(false)
                 setCurrentIndex(3)
               }
@@ -113,7 +105,6 @@ const Horizontal = ({ submited, setSubmited }) => {
           onAllStoriesEnd={() => setAllEnded(true)}
           defaultInterval={5000}
         />
-        {popup.bool ? <Popup popup={popup} setPopup={setPopup} /> : null}
       </div>
       <div style={{ display: "none" }}>
         {DATA.map(slide => <img src={slide.url} alt="img" />)}
