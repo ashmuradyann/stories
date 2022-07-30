@@ -83,13 +83,14 @@ const Horizontal = ({ submited, setSubmited }) => {
   })
 
   return (
-    <div className="container">
-      <div className="wrapper" onClick={(e) => {
-        if(allEnded && e.pageY < 632 && showForm) {
+    <div className="container" onClick={(e) => {
+        e.preventDefault()
+        if(allEnded && e.pageY < 632 && !showForm) {
           setCurrentIndex(3)
           setAllEnded(false)
         }
       }}>
+      <div className="wrapper">
         <Stories
           currentIndex={currentIndex}
           stories={readyToRend}
