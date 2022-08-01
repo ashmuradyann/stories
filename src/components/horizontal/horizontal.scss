@@ -6,7 +6,6 @@
 
     .wrapper {
         width: 100%;
-        height: fit-content;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -21,6 +20,23 @@
 
             img {
                 width: 100%;
+                // transform: scale(100%)
+            }
+        }
+    }
+}
+
+@media (min-width: 410px) {
+    .container {
+        .wrapper {
+            div {
+                max-height: 635px;
+            }
+
+            .story__wrapper {
+                img {
+                    transform: scale(100%)
+                }
             }
         }
     }

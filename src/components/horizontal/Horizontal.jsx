@@ -11,9 +11,6 @@ import './horizontal.scss'
 
 const Horizontal = ({ submited, setSubmited }) => {
 
-  const lower410 = window.matchMedia('(max-width: 410px)')
-  const higher1920 = window.matchMedia('(min-width: 1920px)')
-
   const [currentIndex, setCurrentIndex] = useState(0)
   const [allEnded, setAllEnded] = useState(null)
   const [showForm, setShowForm] = useState(null)
@@ -25,13 +22,13 @@ const Horizontal = ({ submited, setSubmited }) => {
       setWidth("100vw")
       setHeight("100%")
     } else if (window.matchMedia('(max-width: 1600px)').matches) {
-      setWidth("400px")
+      setWidth("360px")
       setHeight("700px")
     } else if (window.matchMedia('(min-width: 1800px)').matches) {
       setWidth("100%")
       setHeight("100%")
     }
-  }, [])
+  }, [currentIndex])
 
   const readyToRend = DATA.map((slide, i) => {
     return {
@@ -57,9 +54,11 @@ const Horizontal = ({ submited, setSubmited }) => {
       seeMoreCollapsed: ({ toggleMore, action, isPaused }) => {
         if (allEnded) {
           action("pause")
+          window.matchMedia('(max-width: 410px)').matches && setHeight("fit-content")
         }
         if (currentIndex === 3) {
           action("play")
+          window.matchMedia('(max-width: 410px)').matches && setHeight("100%")
         }
         setCurrentIndex(null)
         return (
@@ -100,7 +99,6 @@ const Horizontal = ({ submited, setSubmited }) => {
 
   return (
     <div className="container" onClick={(e) => {
-      e.preventDefault()
       if (allEnded && e.pageY < 632 && !showForm) {
         setCurrentIndex(3)
         setAllEnded(false)
@@ -112,8 +110,6 @@ const Horizontal = ({ submited, setSubmited }) => {
           stories={readyToRend}
           width={width}
           height={height}
-          // width={lower410.matches ? "100vw" : "400px"}
-          // height={lower410.matches ? "100%" : "700px"}
           onAllStoriesEnd={() => setAllEnded(true)}
           defaultInterval={5000}
         />
