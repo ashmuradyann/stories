@@ -22,7 +22,7 @@ const Horizontal = ({ submited, setSubmited }) => {
       setWidth("100vw")
       setHeight("100%")
     } else if (window.matchMedia('(max-width: 1600px)').matches) {
-      setWidth("360px")
+      setWidth("394px")
       setHeight("700px")
     } else if (window.matchMedia('(min-width: 1800px)').matches) {
       setWidth("100%")
