@@ -76,6 +76,10 @@
         }
     }
 
+    .seeMoreCollapsed:hover .default {
+        background: #000;
+    }
+
     .seeMoreCollapsed:hover {
         filter: brightness(0.8);
     }

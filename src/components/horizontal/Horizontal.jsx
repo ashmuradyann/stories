@@ -60,7 +60,7 @@ const Horizontal = ({ submited, setSubmited }) => {
                 style={submited
                   ? { pointerEvents: "none", backgroundColor: "#808080" }
                   : { backgroundColor: slide.form.toggleButton.backgroundColor }}
-                className="seeMoreCollapsed"
+                className="seeMoreCollapsed default"
                 onClick={() => {
                   toggleMore(true)
                 }}>
@@ -69,7 +69,7 @@ const Horizontal = ({ submited, setSubmited }) => {
             </div> : null}
             {slide.popup.needed ? <div className="seeMore__wrapper">
               <button style={{ backgroundColor: slide.popup.data.button.backgroundColor }}
-                className="seeMoreCollapsed popup"
+                className="seeMoreCollapsed default"
                 onClick={() => {
                   toggleMore(true)
                 }}>
@@ -95,7 +95,7 @@ const Horizontal = ({ submited, setSubmited }) => {
           currentIndex={currentIndex}
           stories={readyToRend}
           width={lower410.matches ? "100vw" : "400px"}
-          height={lower410.matches ? "690px" : "700px"}
+          height={lower410.matches ? "100%" : "700px"}
           onAllStoriesEnd={() => setAllEnded(true)}
           defaultInterval={5000}
         />

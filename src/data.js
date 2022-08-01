@@ -98,7 +98,7 @@ export const DATA = [
     {
         id: 4,
         url: image5,
-        duration: 20000,
+        duration: 3000,
         paused: false,
         playAfterPause: false,
         popup: {
