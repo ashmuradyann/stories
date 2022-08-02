@@ -21,7 +21,6 @@
 
             img {
                 width: 100%;
-                // transform: scale(100%)
             }
         }
     }
@@ -32,12 +31,6 @@
         .wrapper {
             div {
                 max-height: 100vh;
-            }
-
-            .story__wrapper {
-                img {
-                    // transform: scale(1.1)
-                }
             }
         }
     }
@@ -53,7 +46,7 @@
     .seeMoreCollapsed {
         border: none;
         outline: none;
-        border-radius: 10px;
+        border-radius: 8px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -100,6 +93,28 @@
 
     .seeMoreCollapsed:hover {
         filter: brightness(0.8);
+    }
+}
+
+@media (min-width: 1800px) {
+    .seeMore__wrapper {
+        .seeMoreCollapsed {
+            border-radius: 10px;
+            width: 60%;
+            height: 70px;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+@media (max-width: 350px) {
+    .seeMore__wrapper {
+        .seeMoreCollapsed {
+            border-radius: 8px;
+            width: 60%;
+            height: 40px;
+            font-size: 1rem;
+        }
     }
 }
 
