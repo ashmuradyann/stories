@@ -1,4 +1,4 @@
-import { useState, useEffect, memo } from 'react'
+import { useState, useEffect, memo, useRef } from 'react'
 
 import { DATA } from '../../data'
 
@@ -17,6 +17,8 @@ const Horizontal = ({ submited, setSubmited }) => {
     return check;
   }
 
+  const widthRef = useRef(null)
+
   const [currentIndex, setCurrentIndex] = useState(0)
   const [allEnded, setAllEnded] = useState(null)
   const [showForm, setShowForm] = useState(null)
@@ -29,7 +31,7 @@ const Horizontal = ({ submited, setSubmited }) => {
       setHeight("100%")
     } else if (window.matchMedia('(max-width: 1600px)').matches) {
       setWidth("370px")
-      setHeight("630px")
+      setHeight("655px")
     } else if (window.matchMedia('(max-width: 1800px)').matches) {
       setWidth("450px")
       setHeight("100%")
@@ -107,13 +109,13 @@ const Horizontal = ({ submited, setSubmited }) => {
   })
 
   return (
-    <div className="container" onClick={(e) => {
-      if (allEnded && e.pageY < 632 && !showForm) {
+    <div className="container">
+      <div className="wrapper" ref={widthRef} onClick={(e) => {
+      if (allEnded && e.pageY < (widthRef.current.offsetHeight - 90) && e.pageX < (widthRef.current.offsetWidth / 2) && !showForm) {
         setCurrentIndex(3)
         setAllEnded(false)
       }
     }}>
-      <div className="wrapper">
         <Stories
           currentIndex={currentIndex}
           stories={readyToRend}
