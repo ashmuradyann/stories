@@ -26,16 +26,16 @@
     }
 }
 
-@media (max-width: 410px) {
+@media (max-height: 740px) {
     .container {
         .wrapper {
             div {
-                max-height: 635px;
+                max-height: 100vh;
             }
 
             .story__wrapper {
                 img {
-                    transform: scale(100%)
+                    transform: scale(1.1)
                 }
             }
         }
@@ -57,7 +57,7 @@
         justify-content: center;
         align-items: center;
         width: 60%;
-        height: 50px;
+        height: 40px;
         margin: 25px auto;
         color: #ebebeb;
         background: #333333;
