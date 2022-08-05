@@ -82,13 +82,15 @@ export const DATA = [
                     backgroundColor: "#48c857",
                     appName: "whatsapp",
                     link: "https://api.whatsapp.com/send?phone=79066715422",
+                    username: "79066715422",
                     iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.svg"
                 },
                 {
                     text: "наш Telegram",
                     backgroundColor: "#27a3e1",
-                    appName: "tg",
+                    appName: "telegram",
                     link: "https://t.me/easy_int",
+                    username: "easy_int",
                     iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/telegram-app.svg"
                 },
             ]
@@ -100,7 +102,7 @@ export const DATA = [
     {
         id: 4,
         url: image5,
-        duration: 3000,
+        duration: 1000,
         paused: false,
         playAfterPause: false,
         popup: {

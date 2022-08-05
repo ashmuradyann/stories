@@ -75,13 +75,15 @@ const Horizontal = ({ submited, setSubmited }) => {
         return (
           <>
             {slide.buttons.needed ? <div className="seeMore__wrapper">
-              {slide.buttons.buttonData.map(({ text, backgroundColor, link, appName, iconUrl }, i) => {
+              {slide.buttons.buttonData.map(({ text, backgroundColor, appName, link, username, iconUrl }, i) => {
                 if (window.mobileAndTabletCheck()) {
-                  if (link.startsWith("https")) {
-                    link = link.replace("https", appName)
-                  }
-                  if (link.startsWith("http")) {
-                    link = link.replace("http", appName)
+                  switch (appName) {
+                    case "whatsapp":
+                      link = "whatsapp://send?abid=" + username
+                      break
+                    case "telegram":
+                      link = "tg://resolve?domain=" + username
+                      break
                   }
                 }
                 return <button key={i} style={{ backgroundColor: backgroundColor }} className="seeMoreCollapsed link">
@@ -119,7 +121,12 @@ const Horizontal = ({ submited, setSubmited }) => {
   return (
     <div className="container">
       <div className="wrapper" ref={widthRef} onClick={(e) => {
-        if (allEnded && e.pageY < (widthRef.current.offsetHeight - 90) && e.pageX < (widthRef.current.offsetWidth / 2) && !showForm) {
+        const position = widthRef.current.getBoundingClientRect()
+        if (allEnded
+            && e.pageY < (widthRef.current.offsetHeight - 90)
+            && position.left < e.pageX
+            && position.right / 2 + 50 > e.pageX
+            && !showForm) {
           setCurrentIndex(3)
           setAllEnded(false)
         }
