@@ -83,7 +83,7 @@ export const DATA = [
                     appName: "whatsapp",
                     link: "https://api.whatsapp.com/send?phone=79066715422",
                     username: "79066715422",
-                    iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.svg"
+                    iconUrl: "https://img.icons8.com/material-outlined/30/ffffff/whatsapp--v1.svg"
                 },
                 {
                     text: "наш Telegram",

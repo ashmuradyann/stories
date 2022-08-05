@@ -15,14 +15,11 @@
         .story__wrapper {
             width: 580px;
             min-height: 1031px;
+            --webkit-max-height: available;
             background-repeat: no-repeat;
             background-origin: border-box;
             background-position: center;
             background-size: 100%;
-
-            // img {
-            //     width: 100%;
-            // }
         }
 
         div {
@@ -31,17 +28,38 @@
     }
 }
 
-@media (min-height: 658px) {
+
+// @media (min-height: 895px) {
+    //     .container {
+//         .wrapper {
+    //             .story__wrapper {
+//                 background-size: 128%;
+//             }
+//         }
+//     }
+// }
+
+@media (min-height: 568px) {
     .container {
         .wrapper {
             .story__wrapper {
-                background-size: 122%;
+                background-size: 125%;
             }
         }
     }
 }
 
-@media (min-height: 895px) {
+@media (min-height: 658px) {
+    .container {
+        .wrapper {
+            .story__wrapper {
+                background-size: 120%;
+            }
+        }
+    }
+}
+
+@media (min-height: 886px) {
     .container {
         .wrapper {
             .story__wrapper {
@@ -51,6 +69,25 @@
     }
 }
 
+// @media (min-width: 320px) and (min-height: 683px) {
+//     .container {
+//         .wrapper {
+//             .story__wrapper {
+//                 background-size: 125%;
+//             }
+//         }
+//     }
+// }
+
+@media (min-height: 1000px) {
+    .container {
+        .wrapper {
+            .story__wrapper {
+                background-size: 100%;
+            }
+        }
+    }
+}
 @media (min-width: 1000px) {
     .container {
         .wrapper {

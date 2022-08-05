@@ -79,7 +79,7 @@ const Horizontal = ({ submited, setSubmited }) => {
                 if (window.mobileAndTabletCheck()) {
                   switch (appName) {
                     case "whatsapp":
-                      link = "whatsapp://send?abid=" + username
+                      link = "whatsapp://wa.me/" + username
                       break
                     case "telegram":
                       link = "tg://resolve?domain=" + username
