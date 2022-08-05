@@ -102,7 +102,7 @@ export const DATA = [
     {
         id: 4,
         url: image5,
-        duration: 1000,
+        duration: 7000,
         paused: false,
         playAfterPause: false,
         popup: {
