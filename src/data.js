@@ -80,12 +80,14 @@ export const DATA = [
                 {
                     text: "наш WhatsApp",
                     backgroundColor: "#48c857",
+                    appName: "whatsapp",
                     link: "https://api.whatsapp.com/send?phone=79066715422",
                     iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.svg"
                 },
                 {
                     text: "наш Telegram",
                     backgroundColor: "#27a3e1",
+                    appName: "tg",
                     link: "https://t.me/easy_int",
                     iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/telegram-app.svg"
                 },
