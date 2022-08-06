@@ -14,7 +14,8 @@
 
         .story__wrapper {
             width: 580px;
-            min-height: 1031px;
+            min-height: 87vh;
+            max-height: 100vh;
             --webkit-max-height: available;
             background-repeat: no-repeat;
             background-origin: border-box;
@@ -29,15 +30,6 @@
 }
 
 
-// @media (min-height: 895px) {
-    //     .container {
-//         .wrapper {
-    //             .story__wrapper {
-//                 background-size: 128%;
-//             }
-//         }
-//     }
-// }
 
 @media (min-height: 568px) {
     .container {
@@ -54,6 +46,26 @@
         .wrapper {
             .story__wrapper {
                 background-size: 120%;
+            }
+        }
+    }
+}
+
+@media (min-width: 375px) and (min-height: 812px) {
+    .container {
+        .wrapper {
+            .story__wrapper {
+                background-size: 122%;
+            }
+        }
+    }
+}
+
+@media (min-width: 390px) and (min-height: 844px) {
+    .container {
+        .wrapper {
+            .story__wrapper {
+                background-size: 129%;
             }
         }
     }
@@ -88,6 +100,7 @@
         }
     }
 }
+
 @media (min-width: 1000px) {
     .container {
         .wrapper {
