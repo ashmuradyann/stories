@@ -175,7 +175,6 @@ const Horizontal = ({ submited, setSubmited }) => {
           currentIndex={currentIndex}
           stories={readyToRend}
           width={width}
-          loop
           preventDefault={true}
           height={height}
           onAllStoriesEnd={() => setAllEnded(true)}
