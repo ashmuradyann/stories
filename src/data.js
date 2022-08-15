@@ -17,6 +17,21 @@ export const DATA = [
         buttons: {
             needed: false,
         },
+        quiz: {
+            needed: true,
+            data: [
+                {
+                    buttonText: "BMW",
+                    backgroundColor: "#000000",
+                    textColor: "#ffffff"
+                },
+                {
+                    buttonText: "Mercedes",
+                    backgroundColor: "#000000",
+                    textColor: "#ffffff"
+                }
+            ]
+        },
         form: {
             needed: false
         }
@@ -28,94 +43,106 @@ export const DATA = [
         paused: false,
         playAfterPause: false,
         popup: {
-            needed: true,
-            data: {
-                button: {
-                    text: "Подробнее",
-                    backgroundColor: "#333333",
-                    iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.svg"
-                },
-                h1: "Если хочется сказать",
-                text: [{
-                    h2: undefined,
-                    p: "Краткость - сестра таланта. Но иногда предложение может быть на столько интересным, что парой фраз не обойтись. Тогда не стоит молчать - дайте своему пользователю максимальное количество необходимой информции."
-                }],
-            }
+            needed: false,
+            // data: {
+            //     button: {
+            //         text: "Подробнее",
+            //         backgroundColor: "#333333",
+            //         iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.svg"
+            //     },
+            //     h1: "Если хочется сказать",
+            //     text: [{
+            //         h2: undefined,
+            //         p: "Краткость - сестра таланта. Но иногда предложение может быть на столько интересным, что парой фраз не обойтись. Тогда не стоит молчать - дайте своему пользователю максимальное количество необходимой информции."
+            //     }],
+            // }
         },
         buttons: {
             needed: false
         },
-        form: {
-            needed: false
-        }
-    },
-    {
-        id: 2,
-        url: image3,
-        duration: 5000,
-        paused: false,
-        playAfterPause: false,
-        popup: {
-            needed: false
-        },
-        buttons: {
+        quiz: {
             needed: false,
         },
         form: {
             needed: false
         }
     },
-    {
-        id: 3,
-        url: image4,
-        duration: 5000,
-        paused: false,
-        playAfterPause: false,
-        popup: {
-            needed: false
-        },
-        buttons: {
-            needed: true,
-            buttonData: [
-                {
-                    text: "наш WhatsApp",
-                    backgroundColor: "#48c857",
-                    appName: "whatsapp",
-                    link: "https://api.whatsapp.com/send?phone=79066715422",
-                    username: "79066715422",
-                    iconUrl: "https://img.icons8.com/material-outlined/30/ffffff/whatsapp--v1.svg"
-                },
-                {
-                    text: "наш Telegram",
-                    backgroundColor: "#27a3e1",
-                    appName: "telegram",
-                    link: "https://t.me/easy_int",
-                    username: "easy_int",
-                    iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/telegram-app.svg"
-                },
-            ]
-        },
-        form: {
-            needed: false
-        }
-    },
-    {
-        id: 4,
-        url: image5,
-        duration: 7000,
-        paused: false,
-        playAfterPause: false,
-        popup: {
-            needed: false
-        },
-        buttons: {
-            needed: false
-        },
-        form: {
-            needed: true,
-            toggleButton: {
-                backgroundColor: "#333333"
-            }
-        }
-    }
+    // {
+    //     id: 2,
+    //     url: image3,
+    //     duration: 5000,
+    //     paused: false,
+    //     playAfterPause: false,
+    //     popup: {
+    //         needed: false
+    //     },
+    //     buttons: {
+    //         needed: false,
+    //     },
+    //     quiz: {
+    //         needed: false,
+    //     },
+    //     form: {
+    //         needed: false
+    //     }
+    // },
+    // {
+    //     id: 3,
+    //     url: image4,
+    //     duration: 5000,
+    //     paused: false,
+    //     playAfterPause: false,
+    //     popup: {
+    //         needed: false
+    //     },
+    //     buttons: {
+    //         needed: true,
+    //         buttonData: [
+    //             {
+    //                 text: "наш WhatsApp",
+    //                 backgroundColor: "#48c857",
+    //                 appName: "whatsapp",
+    //                 link: "https://api.whatsapp.com/send?phone=79066715422",
+    //                 username: "79066715422",
+    //                 iconUrl: "https://img.icons8.com/material-outlined/30/ffffff/whatsapp--v1.svg"
+    //             },
+    //             {
+    //                 text: "наш Telegram",
+    //                 backgroundColor: "#27a3e1",
+    //                 appName: "telegram",
+    //                 link: "https://t.me/easy_int",
+    //                 username: "easy_int",
+    //                 iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/telegram-app.svg"
+    //             },
+    //         ]
+    //     },
+    //     quiz: {
+    //         needed: false,
+    //     },
+    //     form: {
+    //         needed: false
+    //     }
+    // },
+    // {
+    //     id: 4,
+    //     url: image5,
+    //     duration: 7000,
+    //     paused: false,
+    //     playAfterPause: false,
+    //     popup: {
+    //         needed: false
+    //     },
+    //     buttons: {
+    //         needed: false
+    //     },
+    //     quiz: {
+    //         needed: false,
+    //     },
+    //     form: {
+    //         needed: true,
+    //         toggleButton: {
+    //             backgroundColor: "#333333"
+    //         }
+    //     }
+    // }
 ]

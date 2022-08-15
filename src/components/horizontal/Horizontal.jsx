@@ -9,6 +9,12 @@ import Popup from './popup/Popup'
 
 import './horizontal.scss'
 
+import image1 from './image1.jpg'
+import image2 from './image2.jpg'
+import image3 from '../../assets/images/image3.jpg'
+import image4 from '../../assets/images/image4.jpg'
+import image5 from '../../assets/images/image5.jpg'
+
 const Horizontal = ({ submited, setSubmited }) => {
 
   window.mobileAndTabletCheck = () => {
@@ -22,6 +28,8 @@ const Horizontal = ({ submited, setSubmited }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [allEnded, setAllEnded] = useState(null)
   const [showForm, setShowForm] = useState(null)
+  const [pause, setPause] = useState(true)
+  const [image, setImage] = useState(null)
   const [width, setWidth] = useState("400px")
   const [height, setHeight] = useState("700px")
 
@@ -41,12 +49,34 @@ const Horizontal = ({ submited, setSubmited }) => {
     }
   }, [currentIndex])
 
-  const readyToRend = DATA.map((slide, i) => {
+  const handleQuiz = (id, buttonText) => {
+    setPause(false)
+    switch (id) {
+      case 0:
+        if (buttonText === "BMW") setImage(image1)
+        if (buttonText === "Mercedes") setImage(image2)
+        setCurrentIndex(1)
+        break
+    }
+  }
+  
+  const readyToRend = DATA.map((slide) => {
     return {
       content: ({ story, action }) => {
+        setTimeout(() => {
+          action("pause")
+        }, 4990)
+        switch (pause) {
+          case false:
+            action("")
+            break
+          case true:
+            action("pause")
+            break
+        }
         return (
           <WithSeeMore story={story} action={action} >
-            <div className="story__wrapper" style={{ backgroundImage: `url(${slide.url})` }}>
+            <div className="story__wrapper" style={{ backgroundImage: `url(${image})` }}>
               {/* <img src={slide.url} alt={slide.id} /> */}
             </div>
           </WithSeeMore>
@@ -63,15 +93,15 @@ const Horizontal = ({ submited, setSubmited }) => {
         return null
       },
       seeMoreCollapsed: ({ toggleMore, action, isPaused }) => {
-        if (allEnded) {
-          action("pause")
-          window.mobileAndTabletCheck() && setHeight("fit-content")
-        }
-        if (currentIndex === 3) {
-          action("play")
-          window.mobileAndTabletCheck() && setHeight("100%")
-        }
-        setCurrentIndex(null)
+        // if (allEnded) {
+        //   action("pause")
+        //   window.mobileAndTabletCheck() && setHeight("fit-content")
+        // }
+        // if (currentIndex === 3) {
+        //   action("play")
+        //   window.mobileAndTabletCheck() && setHeight("100%")
+        // }
+        // setCurrentIndex(null)
         return (
           <>
             {slide.buttons.needed ? <div className="seeMore__wrapper">
@@ -103,6 +133,14 @@ const Horizontal = ({ submited, setSubmited }) => {
                 {!submited ? "Отправьте Заявку" : "Заявка Отправлена"}
               </button>
             </div> : null}
+            {slide.quiz.needed ? <div className="seeMore__wrapper">
+              {slide.quiz.data.map(({ buttonText, backgroundColor, textColor }, i) => {
+                return <button key={i} className="seeMoreCollapsed link" onClick={() => handleQuiz(slide.id, buttonText)}>
+                  {buttonText}
+                  {/* <img src={iconUrl} alt={i} />{buttonText} */}
+                </button>
+              })}
+            </div> : null}
             {slide.popup.needed ? <div className="seeMore__wrapper">
               <button style={{ backgroundColor: slide.popup.data.button.backgroundColor }}
                 className="seeMoreCollapsed default"
@@ -118,15 +156,17 @@ const Horizontal = ({ submited, setSubmited }) => {
     }
   })
 
+  console.log(readyToRend)
+
   return (
     <div className="container">
       <div className="wrapper" ref={widthRef} onClick={(e) => {
         const position = widthRef.current.getBoundingClientRect()
         if (allEnded
-            && e.pageY < (widthRef.current.offsetHeight - 90)
-            && position.left < e.pageX
-            && position.right / 2 + 50 > e.pageX
-            && !showForm) {
+          && e.pageY < (widthRef.current.offsetHeight - 90)
+          && position.left < e.pageX
+          && position.right / 2 + 50 > e.pageX
+          && !showForm) {
           setCurrentIndex(3)
           setAllEnded(false)
         }
@@ -135,8 +175,11 @@ const Horizontal = ({ submited, setSubmited }) => {
           currentIndex={currentIndex}
           stories={readyToRend}
           width={width}
+          loop
+          preventDefault={true}
           height={height}
           onAllStoriesEnd={() => setAllEnded(true)}
+          onStoryEnd={() => setPause(true)}
           defaultInterval={5000}
         />
       </div>
