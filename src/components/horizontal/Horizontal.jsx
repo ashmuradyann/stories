@@ -46,6 +46,10 @@ const Horizontal = ({ submited, setSubmited }) => {
     } else if (window.matchMedia('(min-width: 1800px)').matches) {
       setWidth("470px")
       setHeight("785px")
+    } 
+    if (window.matchMedia('(max-height: 769px)').matches && window.matchMedia('(max-width: 1600px)').matches) {
+      setWidth("370px")
+      setHeight("fit-content")
     }
   }, [currentIndex])
 
@@ -92,7 +96,7 @@ const Horizontal = ({ submited, setSubmited }) => {
         }
         return null
       },
-      seeMoreCollapsed: ({ toggleMore, action, isPaused }) => {
+      seeMoreCollapsed: ({ toggleMore, action }) => {
         // if (allEnded) {
         //   action("pause")
         //   window.mobileAndTabletCheck() && setHeight("fit-content")
@@ -155,8 +159,6 @@ const Horizontal = ({ submited, setSubmited }) => {
       }
     }
   })
-
-  console.log(readyToRend)
 
   return (
     <div className="container">
