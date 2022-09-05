@@ -98,7 +98,7 @@ export const DATA = [
                     text: "WhatsApp",
                     backgroundColor: "#48c857",
                     appName: "whatsapp",
-                    link: "https://api.whatsapp.com/send?phone=79515485033",
+                    link: "https://wa.me/79515485033",
                     username: "",
                     iconUrl: "https://img.icons8.com/material-outlined/30/ffffff/whatsapp--v1.svg"
                 },

@@ -20,12 +20,17 @@
             background-repeat: no-repeat;
             background-origin: border-box;
             background-position: center;
-            background-size: 100%;
+            // background-size: 100%;
+            overflow: hidden;
             display: flex;
             justify-content: center;
+            align-items: center;
 
             img {
+                min-width: 320px;
                 width: 100%;
+                // max-height: ;
+                height: 100%;
                 transform: scale(1.01);
             }
         }

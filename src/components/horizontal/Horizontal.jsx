@@ -29,7 +29,7 @@ const Horizontal = ({ submited, setSubmited }) => {
   useEffect(() => {
     if (window.matchMedia('(max-width: 460px)').matches) {
       setWidth("100vw")
-      setHeight("100%")
+      setHeight("100vh")
     } else if (window.matchMedia('(max-width: 1600px)').matches) {
       setWidth("370px")
       setHeight("655px")
