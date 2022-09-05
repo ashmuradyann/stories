@@ -9,12 +9,6 @@ import Popup from './popup/Popup'
 
 import './horizontal.scss'
 
-import image1 from './image1.jpg'
-import image2 from './image2.jpg'
-import image3 from '../../assets/images/image3.jpg'
-import image4 from '../../assets/images/image4.jpg'
-import image5 from '../../assets/images/image5.jpg'
-
 const Horizontal = ({ submited, setSubmited }) => {
 
   window.mobileAndTabletCheck = () => {
@@ -28,8 +22,7 @@ const Horizontal = ({ submited, setSubmited }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [allEnded, setAllEnded] = useState(null)
   const [showForm, setShowForm] = useState(null)
-  const [pause, setPause] = useState(true)
-  const [image, setImage] = useState(null)
+  const [pause, setPause] = useState(false)
   const [width, setWidth] = useState("400px")
   const [height, setHeight] = useState("700px")
 
@@ -45,31 +38,36 @@ const Horizontal = ({ submited, setSubmited }) => {
       setHeight("705px")
     } else if (window.matchMedia('(min-width: 1800px)').matches) {
       setWidth("470px")
-      setHeight("785px")
+      setHeight("100%")
     } 
     if (window.matchMedia('(max-height: 769px)').matches && window.matchMedia('(max-width: 1600px)').matches) {
-      setWidth("370px")
-      setHeight("fit-content")
+      if (window.matchMedia('(max-width: 460px)').matches) {
+        setWidth("100vw")
+        setHeight("100%")
+      } else {
+        setWidth("370px")
+        setHeight("100%")
+      }
     }
   }, [currentIndex])
 
   const handleQuiz = (id, buttonText) => {
-    setPause(false)
-    switch (id) {
-      case 0:
-        if (buttonText === "BMW") setImage(image1)
-        if (buttonText === "Mercedes") setImage(image2)
-        setCurrentIndex(1)
-        break
-    }
+  //   setPause(false)
+  //   switch (id) {
+  //     case 0:
+  //       if (buttonText === "BMW") setImage(image1)
+  //       if (buttonText === "Mercedes") setImage(image2)
+  //       setCurrentIndex(1)
+  //       break
+  //   }
   }
   
   const readyToRend = DATA.map((slide) => {
     return {
       content: ({ story, action }) => {
-        setTimeout(() => {
-          action("pause")
-        }, 4990)
+        // setTimeout(() => {
+        //   action("pause")
+        // }, 4990)
         switch (pause) {
           case false:
             action("")
@@ -80,8 +78,8 @@ const Horizontal = ({ submited, setSubmited }) => {
         }
         return (
           <WithSeeMore story={story} action={action} >
-            <div className="story__wrapper" style={{ backgroundImage: `url(${image})` }}>
-              {/* <img src={slide.url} alt={slide.id} /> */}
+            <div className="story__wrapper">
+              <img src={slide.url} alt={slide.id} />
             </div>
           </WithSeeMore>
         )
@@ -97,15 +95,15 @@ const Horizontal = ({ submited, setSubmited }) => {
         return null
       },
       seeMoreCollapsed: ({ toggleMore, action }) => {
-        // if (allEnded) {
-        //   action("pause")
-        //   window.mobileAndTabletCheck() && setHeight("fit-content")
-        // }
-        // if (currentIndex === 3) {
-        //   action("play")
-        //   window.mobileAndTabletCheck() && setHeight("100%")
-        // }
-        // setCurrentIndex(null)
+        if (allEnded) {
+          window.mobileAndTabletCheck() && setHeight("fit-content")
+          action("pause")
+        }
+        if (currentIndex === 3) {
+          action("play")
+          window.mobileAndTabletCheck() && setHeight("100%")
+        }
+        setCurrentIndex(null)
         return (
           <>
             {slide.buttons.needed ? <div className="seeMore__wrapper">
@@ -169,7 +167,7 @@ const Horizontal = ({ submited, setSubmited }) => {
           && position.left < e.pageX
           && position.right / 2 + 50 > e.pageX
           && !showForm) {
-          setCurrentIndex(3)
+          setCurrentIndex(2)
           setAllEnded(false)
         }
       }}>
@@ -177,10 +175,8 @@ const Horizontal = ({ submited, setSubmited }) => {
           currentIndex={currentIndex}
           stories={readyToRend}
           width={width}
-          preventDefault={true}
           height={height}
           onAllStoriesEnd={() => setAllEnded(true)}
-          onStoryEnd={() => setPause(true)}
           defaultInterval={5000}
         />
       </div>

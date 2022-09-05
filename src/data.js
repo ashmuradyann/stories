@@ -2,7 +2,7 @@ import image1 from './assets/images/image1.jpg'
 import image2 from './assets/images/image2.jpg'
 import image3 from './assets/images/image3.jpg'
 import image4 from './assets/images/image4.jpg'
-import image5 from './assets/images/image5.jpg'
+// import image5 from './assets/images/image5.jpg'
 
 export const DATA = [
     {
@@ -10,7 +10,6 @@ export const DATA = [
         url: image1,
         duration: 5000,
         paused: false,
-        playAfterPause: true,
         popup: {
             needed: false
         },
@@ -18,19 +17,19 @@ export const DATA = [
             needed: false,
         },
         quiz: {
-            needed: true,
-            data: [
-                {
-                    buttonText: "BMW",
-                    backgroundColor: "#000000",
-                    textColor: "#ffffff"
-                },
-                {
-                    buttonText: "Mercedes",
-                    backgroundColor: "#000000",
-                    textColor: "#ffffff"
-                }
-            ]
+            needed: false,
+            // data: [
+            //     {
+            //         buttonText: "BMW",
+            //         backgroundColor: "#000000",
+            //         textColor: "#ffffff"
+            //     },
+            //     {
+            //         buttonText: "Mercedes",
+            //         backgroundColor: "#000000",
+            //         textColor: "#ffffff"
+            //     }
+            // ]
         },
         form: {
             needed: false
@@ -41,7 +40,6 @@ export const DATA = [
         url: image2,
         duration: 5000,
         paused: false,
-        playAfterPause: false,
         popup: {
             needed: false,
             // data: {
@@ -67,82 +65,58 @@ export const DATA = [
             needed: false
         }
     },
-    // {
-    //     id: 2,
-    //     url: image3,
-    //     duration: 5000,
-    //     paused: false,
-    //     playAfterPause: false,
-    //     popup: {
-    //         needed: false
-    //     },
-    //     buttons: {
-    //         needed: false,
-    //     },
-    //     quiz: {
-    //         needed: false,
-    //     },
-    //     form: {
-    //         needed: false
-    //     }
-    // },
-    // {
-    //     id: 3,
-    //     url: image4,
-    //     duration: 5000,
-    //     paused: false,
-    //     playAfterPause: false,
-    //     popup: {
-    //         needed: false
-    //     },
-    //     buttons: {
-    //         needed: true,
-    //         buttonData: [
-    //             {
-    //                 text: "наш WhatsApp",
-    //                 backgroundColor: "#48c857",
-    //                 appName: "whatsapp",
-    //                 link: "https://api.whatsapp.com/send?phone=79066715422",
-    //                 username: "79066715422",
-    //                 iconUrl: "https://img.icons8.com/material-outlined/30/ffffff/whatsapp--v1.svg"
-    //             },
-    //             {
-    //                 text: "наш Telegram",
-    //                 backgroundColor: "#27a3e1",
-    //                 appName: "telegram",
-    //                 link: "https://t.me/easy_int",
-    //                 username: "easy_int",
-    //                 iconUrl: "https://img.icons8.com/ios-glyphs/30/ffffff/telegram-app.svg"
-    //             },
-    //         ]
-    //     },
-    //     quiz: {
-    //         needed: false,
-    //     },
-    //     form: {
-    //         needed: false
-    //     }
-    // },
-    // {
-    //     id: 4,
-    //     url: image5,
-    //     duration: 7000,
-    //     paused: false,
-    //     playAfterPause: false,
-    //     popup: {
-    //         needed: false
-    //     },
-    //     buttons: {
-    //         needed: false
-    //     },
-    //     quiz: {
-    //         needed: false,
-    //     },
-    //     form: {
-    //         needed: true,
-    //         toggleButton: {
-    //             backgroundColor: "#333333"
-    //         }
-    //     }
-    // }
+    {
+        id: 2,
+        url: image3,
+        duration: 5000,
+        paused: false,
+        popup: {
+            needed: false
+        },
+        buttons: {
+            needed: false,
+        },
+        quiz: {
+            needed: false,
+        },
+        form: {
+            needed: false
+        }
+    },
+    {
+        id: 3,
+        url: image4,
+        duration: 5000,
+        paused: false,
+        popup: {
+            needed: false
+        },
+        buttons: {
+            needed: true,
+            buttonData: [
+                {
+                    text: "WhatsApp",
+                    backgroundColor: "#48c857",
+                    appName: "whatsapp",
+                    link: "https://api.whatsapp.com/send?phone=79515485033",
+                    username: "",
+                    iconUrl: "https://img.icons8.com/material-outlined/30/ffffff/whatsapp--v1.svg"
+                },
+                {
+                    text: "ВКонтакте",
+                    backgroundColor: "#4c75a3",
+                    appName: "vk",
+                    link: "https://vk.com/koreanhouse_vrn",
+                    username: "",
+                    iconUrl: "https://img.icons8.com/fluency-systems-filled/30/ffffff/vkontakte.svg"
+                },
+            ]
+        },
+        quiz: {
+            needed: false,
+        },
+        form: {
+            needed: false
+        }
+    }
 ]
