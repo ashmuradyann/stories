@@ -29,7 +29,7 @@ const Horizontal = ({ submited, setSubmited }) => {
   useEffect(() => {
     if (window.matchMedia('(max-width: 460px)').matches) {
       setWidth("100vw")
-      setHeight("100vh")
+      setHeight("100%")
     } else if (window.matchMedia('(max-width: 1600px)').matches) {
       setWidth("370px")
       setHeight("655px")
@@ -68,14 +68,14 @@ const Horizontal = ({ submited, setSubmited }) => {
         // setTimeout(() => {
         //   action("pause")
         // }, 4990)
-        switch (pause) {
-          case false:
-            action("")
-            break
-          case true:
-            action("pause")
-            break
-        }
+        // switch (pause) {
+        //   case false:
+        //     action("")
+        //     break
+        //   case true:
+        //     action("pause")
+        //     break
+        // }
         return (
           <WithSeeMore story={story} action={action} >
             <div className="story__wrapper">
